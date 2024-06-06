@@ -4,6 +4,7 @@ from core.Settings import settings
 import logging
 
 
+
 async def main():
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s - [%(levelname)s] - %(name)s - "
