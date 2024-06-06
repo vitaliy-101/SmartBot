@@ -1,8 +1,9 @@
 import asyncio
 from aiogram import Bot, Dispatcher
 from core.Settings import settings
+from core.utils.commands import set_commands
+from handlers import donation
 import logging
-
 
 
 async def main():
@@ -13,7 +14,9 @@ async def main():
     bot = Bot(settings.bots.bot_token)
     bot.default.parse_mode = 'HTML'
     dp = Dispatcher()
+    dp.include_router(donation.router)
 
+    await set_commands(bot)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
